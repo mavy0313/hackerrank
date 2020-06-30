@@ -1,4 +1,4 @@
-package twodimensionalarray;
+package com.mavy0313.hackerrank.twodimensionalarray;
 
 import org.junit.Test;
 

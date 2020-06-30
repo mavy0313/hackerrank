@@ -1,3 +1,5 @@
+package com.mavy0313.hackerrank;
+
 public class SockMerchant {
 
   public static void main(String[] args) {

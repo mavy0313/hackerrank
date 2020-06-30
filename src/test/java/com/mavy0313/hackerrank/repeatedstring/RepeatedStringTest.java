@@ -1,4 +1,4 @@
-package repeatedstring;
+package com.mavy0313.hackerrank.repeatedstring;
 
 import org.junit.Test;
 

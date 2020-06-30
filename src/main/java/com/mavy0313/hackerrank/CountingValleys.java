@@ -1,3 +1,5 @@
+package com.mavy0313.hackerrank;
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
