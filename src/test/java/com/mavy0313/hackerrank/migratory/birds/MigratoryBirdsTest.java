@@ -1,6 +1,6 @@
 package com.mavy0313.hackerrank.migratory.birds;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
