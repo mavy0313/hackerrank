@@ -8,20 +8,20 @@ import static org.assertj.core.api.BDDAssertions.then;
 
 class MagicSquareTest {
     @Test
-    void squareWithOnes() {
+    void squareWithMissingOneNumberDistinctNumbers() {
         //given
         MagicSquare magicSquare = new MagicSquare();
         List<List<Integer>> square =
                 List.of(
-                        List.of(1, 1, 1),
-                        List.of(1, 1, 1),
-                        List.of(1, 1, 1)
+                        List.of(4, 9, 2),
+                        List.of(3, 5, 7),
+                        List.of(8, 1, 5)
                 );
 
         //when
         int result = magicSquare.convert(square);
 
         //then
-        then(result).isEqualTo(0);
+        then(result).isEqualTo(1);
     }
 }
