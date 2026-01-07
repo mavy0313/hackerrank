@@ -7,6 +7,25 @@ import java.util.List;
 import static org.assertj.core.api.BDDAssertions.then;
 
 class MagicSquareTest {
+
+    @Test
+    void square_is_magic() {
+        //given
+        MagicSquare magicSquare = new MagicSquare();
+        List<List<Integer>> square =
+                List.of(
+                        List.of(8, 3, 4),
+                        List.of(1, 5, 9),
+                        List.of(6, 7, 2)
+                );
+
+        //when
+        int result = magicSquare.convert(square);
+
+        //then
+        then(result).isEqualTo(0);
+    }
+
     @Test
     void square_with_missing_one_number() {
         //given
@@ -44,50 +63,14 @@ class MagicSquareTest {
     }
 
     @Test
-    void square_with_missing_one_number_and_shifted_one_step_forward() {
+    void square_with_missing_three_numbers() {
         //given
         MagicSquare magicSquare = new MagicSquare();
         List<List<Integer>> square =
                 List.of(
-                        List.of(4, 4, 9),
-                        List.of(8, 5, 2),
-                        List.of(1, 6, 7)
-                );
-
-        //when
-        int result = magicSquare.convert(square);
-
-        //then
-        then(result).isEqualTo(1);
-    }
-
-    @Test
-    void square_with_missing_two_numbers_and_shifted_one_step_forward() {
-        //given
-        MagicSquare magicSquare = new MagicSquare();
-        List<List<Integer>> square =
-                List.of(
-                        List.of(4, 5, 9),
-                        List.of(8, 5, 2),
-                        List.of(1, 6, 7)
-                );
-
-        //when
-        int result = magicSquare.convert(square);
-
-        //then
-        then(result).isEqualTo(2);
-    }
-
-    @Test
-    void square_with_missing_three_numbers_and_shifted_one_step_forward() {
-        //given
-        MagicSquare magicSquare = new MagicSquare();
-        List<List<Integer>> square =
-                List.of(
-                        List.of(4, 5, 9),
-                        List.of(8, 5, 1),
-                        List.of(1, 6, 7)
+                        List.of(3, 9, 2),
+                        List.of(2, 5, 7),
+                        List.of(8, 1, 5)
                 );
 
         //when
@@ -98,20 +81,20 @@ class MagicSquareTest {
     }
 
     @Test
-    void square_with_missing_one_number_and_shifted_one_step_backward() {
+    void square_with_missing_20_numbers() {
         //given
         MagicSquare magicSquare = new MagicSquare();
         List<List<Integer>> square =
                 List.of(
-                        List.of(9, 2, 7),
-                        List.of(4, 5, 6),
-                        List.of(4, 8, 1)
+                        List.of(4, 4, 7),
+                        List.of(3, 1, 5),
+                        List.of(1, 7, 9)
                 );
 
         //when
         int result = magicSquare.convert(square);
 
         //then
-        then(result).isEqualTo(1);
+        then(result).isEqualTo(20);
     }
 }

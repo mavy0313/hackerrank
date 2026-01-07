@@ -4,48 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MagicSquare {
-    /**
-     * Magic constant is always 15?? yes for 3 x 3 squares
-     * @param square
-     * @return
-     */
+
     public int convert(List<List<Integer>> square) {
-        int[] magicArray = { 4, 9, 2, 7, 6, 1, 8, 3 }; //sum is 40
-        //                   3, 4, 9, 2, 7, 6, 1, 8
-        //check middle 5
-        int[] squareArray = {
+        int[] inputSquareArray = {
                 square.get(0).get(0),
                 square.get(0).get(1),
                 square.get(0).get(2),
-                square.get(1).get(2),
-                square.get(2).get(2),
-                square.get(2).get(1),
-                square.get(2).get(0),
                 square.get(1).get(0),
+                square.get(1).get(1),
+                square.get(1).get(2),
+                square.get(2).get(0),
+                square.get(2).get(1),
+                square.get(2).get(2),
         };
 
-        int cost;
         List<Integer> costs = new ArrayList<>();
-        for (int i = 0; i < squareArray.length; i++) {
-            cost = findCost(magicArray, buildSquareArrayStartingFrom(i, squareArray));
+        for (int[] magicSquare : getMagicSquares()) {
+            int cost = findCost(inputSquareArray, magicSquare);
+            if (cost == 0) return 0;
             costs.add(cost);
         }
-
         return costs.stream().min(Integer::compare).orElse(-1);
-
     }
 
-    private int[] buildSquareArrayStartingFrom(int index, int[] array) {
-        int[] result = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            if (i + index < array.length) {
-                result[i] = array[i + index];
-            } else {
-                int newIdx = (i + index) - array.length;
-                result[i] = array[newIdx];
-            }
-        }
-        return result;
+    private static int[][] getMagicSquares() {
+        return new int[][] {
+            { 8, 3, 4, 1, 5, 9, 6, 7, 2 },
+            { 6, 7, 2, 1, 5, 9, 8, 3, 4 },
+            { 6, 1, 8, 7, 5, 3, 2, 9, 4 },
+            { 2, 9, 4, 7, 5, 3, 6, 1, 8 },
+            { 2, 7, 6, 9, 5, 1, 4, 3, 8 },
+            { 4, 3, 8, 9, 5, 1, 2, 7, 6 },
+            { 4, 9, 2, 3, 5, 7, 8, 1, 6 },
+            { 8, 1, 6, 3, 5, 7, 4, 9, 2 },
+        };
     }
 
     private int findCost(int[] magicArray, int[] squareArray) {
